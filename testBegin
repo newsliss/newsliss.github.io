@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../JS/jquery-3.2.1.min.js"></script>
+
+    <script src="../JS/testBegin.js"></script>
+    <script type="text/javascript">
+        ////SP回顾数据插入表格的代码
+        //Search data
+        //function serchList() {
+        //    var name = listName[listCount - 1];
+        //    var oList = this.collList.getByTitle(name);
+        //    var camlQuery = new SP.CamlQuery();
+
+        //    var queryStr = "<View>"
+        //             + "<Query>"
+        //                 + "<Where>"
+        //                     + "<And>"
+        //          //loginUser
+        //                          + "<Or>"
+        //                              + "<Or>"
+        //                                    + "<Or>"
+        //                                        + "<Or>"
+        //                                            + "<Or>"
+
+        //                                                + "<Eq><FieldRef Name='Expert' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                                                + "<Eq><FieldRef Name='Pilot' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                                            + "</Or>"
+        //                                            + "<Eq><FieldRef Name='Leader' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                                        + "</Or>"
+        //                                        + "<Eq><FieldRef Name='Crew' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                                    + "</Or>"
+        //                                    + "<Eq><FieldRef Name='Validator' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                              + "</Or>"
+        //                              + "<Eq><FieldRef Name='EffectsCharger' /><Value Type='User'>" + loginUserName + "</Value></Eq>"
+        //                          + "</Or>"
+        //          //status
+        //                          + "<Or>"
+        //                              + "<Or>"
+        //                                  + "<Or>"
+        //                                        + "<Or>"
+        //                                            + "<Or>"
+        //                                                + "<Or>"
+        //                                                    + "<Or>"
+        //                                                        + "<Or>"
+        //                                                            + "<Or>"
+
+        //                                                                + "<Eq><FieldRef Name='Status' /><Value Type='Text'>10</Value></Eq>"
+        //                                                                + "<Eq><FieldRef Name='Status' /><Value Type='Text'>20</Value></Eq>"
+        //                                                            + "</Or>"
+        //                                                            + "<Eq><FieldRef Name='Status' /><Value Type='Text'>30</Value></Eq>"
+        //                                                        + "</Or>"
+        //                                                        + "<Eq><FieldRef Name='Status' /><Value Type='Text'>40</Value></Eq>"
+        //                                                    + "</Or>"
+        //                                                    + "<Eq><FieldRef Name='Status' /><Value Type='Text'>50</Value></Eq>"
+        //                                                + "</Or>"
+        //                                                + "<Eq><FieldRef Name='Status' /><Value Type='Text'>60</Value></Eq>"
+        //                                            + "</Or>"
+        //                                            + "<Eq><FieldRef Name='Status' /><Value Type='Text'>65</Value></Eq>"
+        //                                        + "</Or>"
+        //                                        + "<Eq><FieldRef Name='Status' /><Value Type='Text'>70</Value></Eq>"
+        //                                 + "</Or>"
+        //                                 + "<Eq><FieldRef Name='Status' /><Value Type='Text'>75</Value></Eq>"
+        //                              + "</Or>"
+        //                              + "<Eq><FieldRef Name='Status' /><Value Type='Text'>90</Value></Eq>"
+        //                          + "</Or>"
+
+        //                      + "</And>"
+        //                  + "</Where>"
+        //             + "</Query>"
+        //        + "</View>";
+
+
+        //    camlQuery.set_viewXml(queryStr);
+        //    var collListItem = oList.getItems(camlQuery);
+        //    clientContext.load(collListItem);
+
+        //    clientContext.executeQueryAsync(function () {
+        //        var listItemEnumerator = collListItem.getEnumerator();
+        //        while (listItemEnumerator.moveNext()) {
+        //            var oListItem = listItemEnumerator.get_current();
+        //            var Status = oListItem.get_item("Status");
+        //            var StatusCode = getLanguageStatusText(Activity, Status);
+
+        //            dataJson.push({
+        //                IdNo: oListItem.get_item("IDNo"), title: oListItem.get_item("Title"),
+        //                Pilot: oListItem.get_item("Pilot"), Leader: oListItem.get_item("Leader")
+        //                            , Status: StatusCode, pageNum: listCount, ID: oListItem.get_item('ID')
+
+
+        //            });
+
+        //            listCount++;
+
+        //        }
+
+        //        jsonNumber++;
+        //        if (listName.length == jsonNumber) {
+        //            if (dataJson.toString().length == 0) {
+        //                //$('#page').html("Data error!");
+        //                var message = getMessageByMessageid('W0002');
+        //                $("#FunctionDataList").append("<tr><td style='border-style:none; color: red' id='page'></td></tr>");
+        //                $('#page').html(message);
+        //                $('#Download').attr("disabled", "true");
+        //            } else {
+        //                getPage(0);
+        //            }
+
+        //        }
+        //    }, Function.createDelegate(this, onQueryListFailed));
+        //    listCount--;
+        //    if (listCount > 0) {
+        //        serchList();
+        //    }
+        //}
+
+        ////几种排序算法的测试
+        //var a = [2, 4, 5, 1, 0, 8, 7];
+        //for (var i = 0; i < a.length; i++) {
+        //    for (var j = i + 1; j <= a.length; j++) {
+        //        if (a[i] > a[j]) {
+        //            var temp = null;
+        //            temp = a[i];
+        //            a[i] = a[j];
+        //            a[j] = temp;
+        //        }
+        //    }
+        //}
+
+        ////json数据插入表格中
+        //$(document).ready(function () {
+        //    var data = [
+        // { "XH": 1, "YWName": "业务1", "SName": "系统1", "QDName": "渠道1", "HJNumber": 5 },
+        // { "XH": 2, "YWName": "业务2", "SName": "系统2", "QDName": "渠道2", "HJNumber": 6 },
+        // { "XH": 3, "YWName": "业务3", "SName": "系统3", "QDName": "渠道3", "HJNumber": 7 }
+        //    ];
+        //    var $table = $('<table border="1"></table>');
+        //    var $head = $('<tr><td>序号</td><td>业务名称</td><td>系统名称</td><td>渠道名称</td><td>环节数</td><td>操作</td></tr>');
+        //    $table.append($head);
+        //    for (var i = 0; i < data.length; i++) {
+        //        var row = data[i];
+        //        var $tr = $('<tr></tr>');
+        //        var XH = $('<td>' + row['XH'] + '</td>');
+        //        var YWName = $('<td>' + row['YWName'] + '</td>');
+        //        var SName = $('<td>' + row['SName'] + '</td>');
+        //        var QDName = $('<td>' + row['QDName'] + '</td>');
+        //        var HJNumber = $('<td>' + row['HJNumber'] + '</td>');
+        //        $tr.append(XH).append(YWName).append(SName).append(QDName).append(HJNumber).append('<td></td>');
+        //        $table.append($tr);
+        //    }
+        //    $('body').append($table);
+        //});
+
+        ////JSrender
+        //原本的分页
+        var html = '';
+        $.each(data.persons, function (i, item) {
+            html += "<tr><td>" + item.FirstName + "</td><td><a href='/Person/Edit/"
+       + item.PersonID + "'>Edit</a> | <a href='/Person/Details/"
+       + item.PersonID + "'>Details</a> | <a href='/Person/Delete/"
+       + item.PersonID + "'>Delete</a></td></tr>";
+        });
+        $('#XXX').append(html);
+
+    </script>
+</head>
+<body>
+    <div id="table">
+        <h1>This is Begins!</h1>
+
+    </div>
+</body>
+</html>
